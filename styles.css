@@ -1,0 +1,141 @@
+:root {
+    --primary-color: #1a73e8; 
+    --secondary-color: #4285f4;
+    --accent-color: #fbbc04; 
+    --bg-color: #f8f9fa; 
+    --text-color: #202124;
+    --card-bg: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #0d47a1, #1976d2);
+    color: white;
+    padding: 60px 20px 140px;
+    text-align: center;
+    position: relative;
+}
+
+/* App 圖示顯示區域 */
+.app-icon-container {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.app-icon {
+    width: 110px;
+    height: 110px;
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    object-fit: cover;
+    background-color: white; /* 預防圖示讀取失敗時留白 */
+    border: 3px solid rgba(255,255,255,0.2);
+}
+
+header h1 { font-size: 3rem; margin: 0 0 10px; font-weight: 700; }
+header p { font-size: 1.1rem; margin-bottom: 35px; opacity: 0.9; }
+
+/* 按鈕 */
+.download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-download {
+    display: flex;
+    align-items: center;
+    background: #000;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s;
+    min-width: 175px;
+}
+
+.btn-download:hover { transform: translateY(-3px); }
+.btn-download i { font-size: 1.6rem; margin-right: 12px; }
+.btn-download .btn-text { text-align: left; line-height: 1.2; }
+.btn-download .btn-text span { font-size: 0.75rem; display: block; opacity: 0.8; }
+.btn-download .btn-text strong { font-size: 1.05rem; }
+
+/* 網格容器 */
+.container {
+    max-width: 1100px;
+    margin: -80px auto 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 強制三欄佈局 */
+    gap: 25px;
+    position: relative;
+    z-index: 10;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(0,0,0,0.15); }
+.card i { font-size: 3rem; color: #4285f4; margin-bottom: 20px; }
+.card h3 { margin-bottom: 15px; font-size: 1.4rem; color: #1a73e8; }
+.card p { color: #5f6368; margin-bottom: 25px; flex-grow: 1; }
+
+/* 客戶支援卡片：關鍵修正 (左右填滿) */
+.card.support {
+    grid-column: 1 / -1; /* 橫跨所有欄位 */
+    flex-direction: row; /* 電腦版改為橫向排列 */
+    text-align: left;
+    padding: 40px 50px;
+    background: linear-gradient(90deg, #ffffff, #e8f0fe);
+}
+
+.card.support i { margin-bottom: 0; margin-right: 30px; font-size: 3.5rem; }
+.card.support .support-content { flex-grow: 1; }
+.card.support .apply-btn { width: auto; min-width: 200px; }
+
+.apply-btn {
+    background: #1a73e8;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    width: 100%;
+    display: inline-block;
+    transition: background 0.2s;
+    text-align: center;
+}
+
+.apply-btn:hover { background: #174ea6; }
+
+footer { text-align: center; padding: 60px 20px; color: #70757a; font-size: 0.9rem; }
+
+/* 響應式微調 */
+@media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; margin-top: -60px; }
+    .card.support { flex-direction: column; text-align: center; padding: 40px 30px; }
+    .card.support i { margin-right: 0; margin-bottom: 20px; }
+    .card.support .apply-btn { width: 100%; }
+}
